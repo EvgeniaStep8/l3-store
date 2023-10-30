@@ -3,6 +3,7 @@ import { Product } from '../product/product';
 import html from './checkout.tpl.html';
 import { formatPrice } from '../../utils/helpers';
 import { cartService } from '../../services/cart.service';
+import { userService } from '../../services/user.service';
 import { ProductData } from 'types';
 
 class Checkout extends Component {
@@ -30,7 +31,12 @@ class Checkout extends Component {
 
   private async _makeOrder() {
     await cartService.clear();
+    const id = await userService.getId();
+
     fetch('/api/makeOrder', {
+      headers: {
+        'x-userid': id,
+      },
       method: 'POST',
       body: JSON.stringify(this.products)
     });
