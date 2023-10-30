@@ -4,6 +4,7 @@ import html from './checkout.tpl.html';
 import { formatPrice } from '../../utils/helpers';
 import { cartService } from '../../services/cart.service';
 import { ProductData } from 'types';
+import { analyticsService } from '../../services/analytics.service';
 
 class Checkout extends Component {
   products!: ProductData[];
@@ -34,7 +35,11 @@ class Checkout extends Component {
       method: 'POST',
       body: JSON.stringify(this.products)
     });
-    window.location.href = '/?isSuccessOrder';
+
+    const productsIds = this.products.map(({ id }) => id);
+    const totalPrice = this.products.reduce((prev, cur) => prev + cur.salePriceU, 0);
+    analyticsService.sendAnalytics('purchase', { totalPrice, productsIds })
+    //window.location.href = '/?isSuccessOrder';
   }
 }
 

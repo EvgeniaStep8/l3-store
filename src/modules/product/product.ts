@@ -10,6 +10,7 @@ export class Product {
   view: View;
   product: ProductData;
   params: ProductComponentParams;
+  secretKey!: string;
 
   constructor(product: ProductData, params: ProductComponentParams = {}) {
     this.product = product;
