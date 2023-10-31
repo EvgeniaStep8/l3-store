@@ -5,6 +5,7 @@ import { formatPrice } from '../../utils/helpers';
 import { cartService } from '../../services/cart.service';
 import { ProductData } from 'types';
 import { analyticsService } from '../../services/analytics.service';
+import { genUUID } from '../../utils/helpers';
 
 class Checkout extends Component {
   products!: ProductData[];
@@ -38,8 +39,9 @@ class Checkout extends Component {
 
     const productsIds = this.products.map(({ id }) => id);
     const totalPrice = this.products.reduce((prev, cur) => prev + cur.salePriceU, 0);
-    analyticsService.sendAnalytics('purchase', { totalPrice, productsIds })
-    //window.location.href = '/?isSuccessOrder';
+    const orderId = genUUID();
+    analyticsService.sendAnalytics('purchase', { orderId, totalPrice, productsIds })
+    window.location.href = '/?isSuccessOrder';
   }
 }
 
