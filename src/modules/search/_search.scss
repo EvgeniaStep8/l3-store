@@ -1,0 +1,45 @@
+.search {
+	width: 900px;
+	margin: 0 auto;
+
+  &__container {
+    width: 100%;
+    border-radius: 10px;
+    border: solid 2px #da15b8;
+    display: flex;
+		margin-bottom: 15px;
+  }
+
+  &__input {
+    display: block;
+    flex: 1 0 0;
+    border: none;
+    outline: none;
+    padding: 0;
+    font-size: 30px;
+    font-weight: 550;
+    line-height: 32px;
+    letter-spacing: -0.3px;
+
+		&::placeholder {
+			color: #E6E1EF;
+		}
+  }
+
+  &__btn {
+    border: none;
+    background-color: inherit;
+    padding: 0;
+		cursor: pointer;
+		height: 60px;
+  }
+
+  &__svg {
+    width: 60px;
+    height: 60px;
+  }
+
+	&__tips {
+		margin-left: 14px;
+	}
+}

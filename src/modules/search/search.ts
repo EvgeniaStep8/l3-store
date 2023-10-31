@@ -1,6 +1,6 @@
 import { Component } from '../component';
 import html from './search.tpl.html';
-import { SearchTips } from './search-tips/searchTips';
+import { SearchTips, _tipsEvent } from './search-tips/searchTips';
 import { testData } from './testData';
 
 class Search extends Component {
@@ -11,6 +11,9 @@ class Search extends Component {
 
 		this.searchTips = new SearchTips();
 		this.searchTips.attach(this.view.tips);
+    this.searchTips.on.subscribe(_tipsEvent, (value) => {
+      this.view.input.value = value;
+    });
   }
 
   async render() {
