@@ -50,6 +50,11 @@ class ProductDetail extends Component {
       .then((products) => {
         this.more.update(products);
       });
+
+      if (await favService.checkProductToFav(productId)) {
+        this.view.heart.classList.add('productDetail__heart_active');
+        this.view.heart.disabled = true;
+      }
   }
 
   private _addToCart() {
@@ -67,6 +72,8 @@ class ProductDetail extends Component {
   private _addToFav() {
     if (!this.product) return;
 
+    this.view.heart.classList.add('productDetail__heart_active');
+    this.view.heart.disabled = true;
     favService.addProduct(this.product);
   }
 }

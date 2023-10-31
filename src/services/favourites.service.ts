@@ -17,9 +17,14 @@ class FavouritesService {
     await this.set([...products, product]);
   }
 
-  async removeProduct(product: ProductData) {
+  async checkProductToFav(id: number) {
     const products = await this.get();
-    await this.set(products.filter(({ id }) => id !== product.id));
+
+    if (products.find((product) => id === product.id)) {
+      return true;
+    }
+
+    return false;
   }
 
 	async get(): Promise<ProductData[]> {
