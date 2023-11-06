@@ -1,0 +1,24 @@
+.search-tips {
+  &__text {
+    color: var(--system-black);
+    font-family: 'Segoe UI';
+    font-size: 22px;
+    font-weight: 550;
+    line-height: 24px;
+  }
+  
+
+  &__container {
+    display: inline-block;
+    padding: 4px 6px 8px;
+    background-color: var(--plate-color);
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+	&__tips {
+		background: linear-gradient(93deg, #DA15B8 4.93%, #8D06CC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+	}
+}
