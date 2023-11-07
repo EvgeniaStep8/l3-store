@@ -67,4 +67,13 @@
   &__more {
     margin-top: 3em;
   }
+
+  &__heart {
+    fill: var(--key-color);
+  }
+
+  &__heart_active {
+    fill: rgb(218, 5, 5);
+    cursor: default;
+  }
 }
