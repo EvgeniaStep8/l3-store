@@ -30,7 +30,6 @@ class Checkout extends Component {
 
   private async _makeOrder() {
     await cartService.clear();
-
     fetch('/api/makeOrder', {
       method: 'POST',
       body: JSON.stringify(this.products)
