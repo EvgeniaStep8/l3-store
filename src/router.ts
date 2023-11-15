@@ -30,5 +30,6 @@ export default class Router {
 
     component.attach(this.$appRoot);
     component.render();
+    console.log('OMG');
   }
 }
